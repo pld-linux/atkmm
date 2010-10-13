@@ -1,8 +1,12 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static libraries
+#
 Summary:	A C++ interface for atk library
 Summary(pl.UTF-8):	Interfejs C++ dla biblioteki atk
 Name:		atkmm
 Version:	2.22.0
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.22/%{name}-%{version}.tar.bz2
@@ -18,7 +22,6 @@ BuildRequires:	pkgconfig
 Requires:	glibmm >= 2.24.0
 Provides:	gtkmm-atk
 Obsoletes:	gtkmm-atk
-Obsoletes:	gtkmm-atk-static
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -55,6 +58,19 @@ API documentation for atkmm library.
 %description apidocs -l pl.UTF-8
 Dokumentacja API biblioteki atkmm.
 
+%package static
+Summary:	atkmm static library
+Summary(pl.UTF-8):	Biblioteka statyczna atkmm
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	gtkmm-atk-static
+
+%description static
+Static atkmm library.
+
+%description static -l pl.UTF-8
+Statyczna biblioteka atkmm.
+
 %prep
 %setup -q
 
@@ -64,7 +80,8 @@ Dokumentacja API biblioteki atkmm.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	%{?with_static_libs:--enable-static}
 %{__make}
 
 %install
@@ -98,3 +115,9 @@ rm -rf $RPM_BUILD_ROOT
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/atkmm-1.6
+
+%if %{with static_libs}
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libatkmm-1.6.a
+%endif
