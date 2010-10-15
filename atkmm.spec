@@ -63,6 +63,7 @@ Summary:	atkmm static library
 Summary(pl.UTF-8):	Biblioteka statyczna atkmm
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Provides:	gtkmm-atk-static
 Obsoletes:	gtkmm-atk-static
 
 %description static
