@@ -6,7 +6,7 @@ Summary:	A C++ interface for atk library
 Summary(pl.UTF-8):	Interfejs C++ dla biblioteki atk
 Name:		atkmm
 Version:	2.22.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.22/%{name}-%{version}.tar.bz2
@@ -93,6 +93,8 @@ rm -rf $RPM_BUILD_ROOT
 	libdocdir=%{_gtkdocdir}/atkmm-1.6 \
 	devhelpdir=%{_gtkdocdir}/atkmm-1.6
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -109,7 +111,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libatkmm-1.6.so
 %{_libdir}/atkmm-1.6
-%{_libdir}/libatkmm-1.6.la
 %{_includedir}/atkmm-1.6
 %{_pkgconfigdir}/atkmm-1.6.pc
 
