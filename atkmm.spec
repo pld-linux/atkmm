@@ -16,7 +16,7 @@ BuildRequires:	atk-devel >= 1:1.22.0
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	glibmm-devel >= 2.24.0
-BuildRequires:	libtool >= 2:1.5
+BuildRequires:	libtool >= 2:2.0
 BuildRequires:	mm-common >= 0.9.5
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
