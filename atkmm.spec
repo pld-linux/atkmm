@@ -5,12 +5,12 @@
 Summary:	A C++ interface for atk library
 Summary(pl.UTF-8):	Interfejs C++ dla biblioteki atk
 Name:		atkmm
-Version:	2.24.1
+Version:	2.24.2
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.24/%{name}-%{version}.tar.xz
-# Source0-md5:	279f32c23b74e5d25bce2b941294cdc8
+# Source0-md5:	d53b60b0f1be597e86070954a49cf0c3
 URL:		http://www.gtkmm.org/
 BuildRequires:	atk-devel >= 1:2.18.0
 BuildRequires:	autoconf >= 2.59
