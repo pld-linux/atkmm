@@ -5,23 +5,25 @@
 Summary:	A C++ interface for atk library
 Summary(pl.UTF-8):	Interfejs C++ dla biblioteki atk
 Name:		atkmm
-Version:	2.24.2
+Version:	2.28.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.24/%{name}-%{version}.tar.xz
-# Source0-md5:	d53b60b0f1be597e86070954a49cf0c3
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.28/%{name}-%{version}.tar.xz
+# Source0-md5:	6194ac577f15567adfa3c923944c6651
 URL:		http://www.gtkmm.org/
 BuildRequires:	atk-devel >= 1:2.18.0
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	glibmm-devel >= 2.46.1
+BuildRequires:	glibmm-devel >= 2.46.2
+BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool >= 2:2.0
-BuildRequires:	mm-common >= 0.9.8
+BuildRequires:	mm-common >= 0.9.10
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	glibmm >= 2.46.1
+Requires:	atk >= 1:2.18.0
+Requires:	glibmm >= 2.46.2
 Provides:	gtkmm-atk
 Obsoletes:	gtkmm-atk
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -38,7 +40,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki atkmm
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	atk-devel >= 1:2.18.0
-Requires:	glibmm-devel >= 2.46.1
+Requires:	glibmm-devel >= 2.46.2
+Requires:	libstdc++-devel >= 6:4.7
 Provides:	gtkmm-atk-devel
 Obsoletes:	gtkmm-atk-devel
 
@@ -87,6 +90,7 @@ Statyczna biblioteka atkmm.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	%{?with_static_libs:--enable-static}
 %{__make}
 
