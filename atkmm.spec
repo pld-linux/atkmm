@@ -5,21 +5,23 @@
 Summary:	A C++ interface for atk library
 Summary(pl.UTF-8):	Interfejs C++ dla biblioteki atk
 Name:		atkmm
-Version:	2.28.0
+Version:	2.28.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.28/%{name}-%{version}.tar.xz
-# Source0-md5:	6194ac577f15567adfa3c923944c6651
-URL:		http://www.gtkmm.org/
+Source0:	https://download.gnome.org/sources/atkmm/2.28/%{name}-%{version}.tar.xz
+# Source0-md5:	03d9d02736645083cbb824c926750624
+URL:		https://www.gtkmm.org/
 BuildRequires:	atk-devel >= 1:2.18.0
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	doxygen >= 1:1.8.9
 BuildRequires:	glibmm-devel >= 2.46.2
 BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool >= 2:2.0
 BuildRequires:	mm-common >= 0.9.10
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	atk >= 1:2.18.0
@@ -56,9 +58,7 @@ Summary:	atkmm API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki atkmm
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description apidocs
 API documentation for atkmm library.
@@ -84,12 +84,14 @@ Statyczna biblioteka atkmm.
 %setup -q
 
 %build
+mm-common-prepare --copy --force
 %{__libtoolize}
 %{__aclocal} -I build
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
+	--enable-maintainer-mode \
 	--disable-silent-rules \
 	%{?with_static_libs:--enable-static}
 %{__make}
