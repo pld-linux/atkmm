@@ -58,7 +58,7 @@ Summary:	atkmm API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki atkmm
 Group:		Documentation
 Requires:	gtk-doc-common
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 API documentation for atkmm library.
