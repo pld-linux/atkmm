@@ -5,12 +5,12 @@
 Summary:	A C++ interface for atk library
 Summary(pl.UTF-8):	Interfejs C++ dla biblioteki atk
 Name:		atkmm
-Version:	2.28.1
+Version:	2.28.2
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/atkmm/2.28/%{name}-%{version}.tar.xz
-# Source0-md5:	03d9d02736645083cbb824c926750624
+# Source0-md5:	c1dc581b9cf14a8f3cd088a7563d0d3e
 URL:		https://www.gtkmm.org/
 BuildRequires:	atk-devel >= 1:2.18.0
 BuildRequires:	autoconf >= 2.59
@@ -21,13 +21,14 @@ BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool >= 2:2.0
 BuildRequires:	mm-common >= 0.9.10
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	atk >= 1:2.18.0
 Requires:	glibmm >= 2.46.2
 Provides:	gtkmm-atk
-Obsoletes:	gtkmm-atk
+Obsoletes:	gtkmm-atk < 2.22.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,7 +46,7 @@ Requires:	atk-devel >= 1:2.18.0
 Requires:	glibmm-devel >= 2.46.2
 Requires:	libstdc++-devel >= 6:4.7
 Provides:	gtkmm-atk-devel
-Obsoletes:	gtkmm-atk-devel
+Obsoletes:	gtkmm-atk-devel < 2.22.0
 
 %description devel
 Header files for atkmm library.
@@ -72,7 +73,7 @@ Summary(pl.UTF-8):	Biblioteka statyczna atkmm
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Provides:	gtkmm-atk-static
-Obsoletes:	gtkmm-atk-static
+Obsoletes:	gtkmm-atk-static < 2.22.0
 
 %description static
 Static atkmm library.
