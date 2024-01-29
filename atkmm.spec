@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_without	apidocs		# API documentation
 %bcond_without	static_libs	# static library
 
 Summary:	A C++ interface for atk library
@@ -15,12 +16,12 @@ URL:		https://www.gtkmm.org/
 BuildRequires:	atk-devel >= 1:2.18.0
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	doxygen >= 1:1.8.9
+%{?with_apidocs:BuildRequires:	doxygen >= 1:1.8.9}
 BuildRequires:	glibmm-devel >= 2.46.2
-BuildRequires:	graphviz
+%{?with_apidocs:BuildRequires:	graphviz}
 BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool >= 2:2.0
-BuildRequires:	libxslt-progs
+%{?with_apidocs:BuildRequires:	libxslt-progs}
 BuildRequires:	mm-common >= 0.9.10
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
@@ -94,6 +95,7 @@ mm-common-prepare --copy --force
 %{__autoheader}
 %{__automake}
 %configure \
+	%{__enable_disable apidocs documentation} \
 	--enable-maintainer-mode \
 	--disable-silent-rules \
 	%{?with_static_libs:--enable-static}
@@ -128,9 +130,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/atkmm-1.6
 %{_pkgconfigdir}/atkmm-1.6.pc
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/atkmm-1.6
+%endif
 
 %if %{with static_libs}
 %files static
