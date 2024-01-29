@@ -17,8 +17,10 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	doxygen >= 1:1.8.9
 BuildRequires:	glibmm-devel >= 2.46.2
+BuildRequires:	graphviz
 BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool >= 2:2.0
+BuildRequires:	libxslt-progs
 BuildRequires:	mm-common >= 0.9.10
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
